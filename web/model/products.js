@@ -12,18 +12,18 @@ function list_products() {
 function getProduct(product_id) {
     var db = pgp(config.db.connectionString);
 
-    var q = "SELECT * FROM products WHERE id = '" + product_id + "';";
+    var q = "SELECT * FROM products WHERE id = $1";
 
-    return db.one(q);
+    return db.one(q, product_id);
 }
 
 function search(query) {
 
     var db = pgp(config.db.connectionString);
 
-    var q = "SELECT * FROM products WHERE name ILIKE '%" + query + "%' OR description ILIKE '%" + query + "%';";
+    var q = "SELECT * FROM products WHERE name ILIKE '%1#%' OR description ILIKE '%$1#%'";
 
-    return db.many(q);
+    return db.many(q, query);
 
 }
 
@@ -31,18 +31,10 @@ function purchase(cart) {
 
     var db = pgp(config.db.connectionString);
 
-    var q = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price) VALUES('" +
-            cart.mail + "', '" +
-            cart.product_name + "', '" +
-            cart.username + "', '" +
-            cart.product_id + "', '" +
-            cart.address + "', '" +
-            cart.ship_date + "', '" +
-            cart.phone + "', '" +
-            cart.price +
-            "');";
-
-    return db.one(q);
+    var q = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price)"+
+             "VALUES(${mail}, ${product_name}, ${username}, ${product_id}, ${address}, ${ship_date}, ${phone}, ${price})";
+             
+    return db.none(q, cart);
 
 }
 
@@ -50,9 +42,9 @@ function get_purcharsed(username) {
 
     var db = pgp(config.db.connectionString);
 
-    var q = "SELECT * FROM purchases WHERE user_name = '" + username + "';";
+    var q = "SELECT * FROM purchases WHERE user_name = $1";
 
-    return db.many(q);
+    return db.many(q, username);
 
 }
 
