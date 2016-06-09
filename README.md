@@ -39,17 +39,17 @@ The most simple way to run the project is using docker-compose, doing this:
 
 ```bash
 
-    # git clone https://github.com/cr0hn/vulnerable-node.git vulnerable-node
-    # cd vulnerable-node/
-    # docker-compose build && docker-compose up
-    Building postgres_db
-    Step 1 : FROM library/postgres
-     ---> 247a11721cbd
-    Step 2 : MAINTAINER "Daniel Garcia aka (cr0hn)" <cr0hn@cr0hn.com>
-     ---> Using cache
-     ---> d67c05e9e2d5
-    Step 3 : ADD init.sql /docker-entrypoint-initdb.d/
-    ....
+# git clone https://github.com/cr0hn/vulnerable-node.git vulnerable-node
+# cd vulnerable-node/
+# docker-compose build && docker-compose up
+Building postgres_db
+Step 1 : FROM library/postgres
+---> 247a11721cbd
+Step 2 : MAINTAINER "Daniel Garcia aka (cr0hn)" <cr0hn@cr0hn.com>
+---> Using cache
+---> d67c05e9e2d5
+Step 3 : ADD init.sql /docker-entrypoint-initdb.d/
+....
 ```
 
 ## Running
