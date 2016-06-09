@@ -37,6 +37,9 @@ switch (process.env.STAGE){
     case "DEVEL":
         config = config_devel;
         break;
+
+    default:
+        config = config_devel;
 }
 
 // Build connection string

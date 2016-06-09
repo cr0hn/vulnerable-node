@@ -116,6 +116,12 @@ router.all('/products/buy', function(req, res, next) {
             price: params.price.substr(0, params.price.length - 1) // remove "€" symbol
         }
 
+        // Check mail format
+        var re = /^([a-zA-Z0-9])(([\-.]|[_]+)?([a-zA-Z0-9]+))*(@){1}[a-z0-9]+[.]{1}(([a-z]{2,3})|([a-z]{2,3}[.]{1}[a-z]{2,3}))$/
+        if (!re.test(cart.mail)){
+            throw new Error("Invalid mail format");
+        }
+
         // Checks all values is set
         for (var prop in cart){
             if (cart[prop] == undefined){

@@ -26,7 +26,6 @@ function init_db() {
                         // success;
                     })
                     .catch(function (err) {
-                        console.log(err)
                     });
             }
 
@@ -48,7 +47,6 @@ function init_db() {
                         // success;
                     })
                     .catch(function (err) {
-                        console.log(err)
                     });
             }
 
