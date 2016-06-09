@@ -1,9 +1,7 @@
 Vulnerable Node
 ===============
 
-
-.. figure:: https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/logo/logo.png
-    :align: left
+![Logo](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/logo.png)
 
 *Vulnerable Node: A very vulnerable web site written in NodeJS*
 
@@ -19,7 +17,7 @@ The goal of this project is to be a project with really vulnerable code in NodeJ
 
 ## Why?
 
-Similar project, like OWASP Node Goat, are pretty and useful for learning process, but not for a real researcher or studding vulnerabilities in source code.
+Similar project, like OWASP Node Goat, are pretty and useful for learning process but not for a real researcher or studding vulnerabilities in source code, because their code is not really vulnerable but simulated.
 
 This project was created with the **purpose of have a project with identified vulnerabilities in source code with the finality of can measure the quality of security analyzers tools**.
 
@@ -38,8 +36,10 @@ This project simulates a real (and very little) shop site that has identifiable 
 
 The most simple way to run the project is using docker-compose, doing this:
 
-.. code-block: bash
+```bash
 
+    # git clone https://github.com/cr0hn/vulnerable-node.git vulnerable-node
+    # cd vulnerable-node/
     # docker-compose build && docker-compose up
     Building postgres_db
     Step 1 : FROM library/postgres
@@ -49,6 +49,26 @@ The most simple way to run the project is using docker-compose, doing this:
      ---> d67c05e9e2d5
     Step 3 : ADD init.sql /docker-entrypoint-initdb.d/
     ....
+```
+
+## Running
+
+Once docker compose was finished, we can open a browser and type the URL: `127.0.0.1:3000` (or the IP where you deployed the project):
+
+![Login screen](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/login.jpg)
+
+To access to website you can use displayed in landing page:
+
+- admin : admin
+- roberto : asdfpiuw981
+
+Here some images of site:
+
+![home screen](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/home.jpg)
+
+![shopping](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/shop.jpg)
+
+![purchased products](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/purchased.jpg)
 
 # Vulnerabilities
 
@@ -75,3 +95,7 @@ I took ideas and how to explode it in NodeJS using these references:
 
 - https://blog.risingstack.com/node-js-security-checklist/
 - https://github.com/substack/safe-regex
+
+# License
+
+This project is released under license BSD.
