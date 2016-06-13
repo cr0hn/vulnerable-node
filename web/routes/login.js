@@ -1,7 +1,10 @@
+var log4js = require("log4js");
 var url = require("url");
 var express = require('express');
 var auth = require("../model/auth");
 var router = express.Router();
+
+var logger = log4js.getLogger('vnode')
 
 // Login template
 router.get('/login', function(req, res, next) {
@@ -18,6 +21,8 @@ router.post('/login/auth', function(req, res) {
     var user = req.body.username;
     var password = req.body.password;
     var returnurl = req.body.returnurl;
+
+    logger.error("Tried to login attempt from user = " + user);
 
     auth(user, password)
         .then(function (data) {
