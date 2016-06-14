@@ -1,16 +1,15 @@
 var config = require("../config"),
-    pgp = require('pg-promise')();
+    pgp = require('pg-promise')(),
+    db = pgp(config.db.connectionString);
 
 function list_products() {
-    var db = pgp(config.db.connectionString);
-
+    
     var q = "SELECT * FROM products;";
 
     return db.many(q);
 }
 
 function getProduct(product_id) {
-    var db = pgp(config.db.connectionString);
 
     var q = "SELECT * FROM products WHERE id = '" + product_id + "';";
 
@@ -19,8 +18,6 @@ function getProduct(product_id) {
 
 function search(query) {
 
-    var db = pgp(config.db.connectionString);
-
     var q = "SELECT * FROM products WHERE name ILIKE '%" + query + "%' OR description ILIKE '%" + query + "%';";
 
     return db.many(q);
@@ -28,8 +25,6 @@ function search(query) {
 }
 
 function purchase(cart) {
-
-    var db = pgp(config.db.connectionString);
 
     var q = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price) VALUES('" +
             cart.mail + "', '" +
@@ -47,8 +42,6 @@ function purchase(cart) {
 }
 
 function get_purcharsed(username) {
-
-    var db = pgp(config.db.connectionString);
 
     var q = "SELECT * FROM purchases WHERE user_name = '" + username + "';";
 
