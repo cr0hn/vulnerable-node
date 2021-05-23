@@ -1,0 +1,32 @@
+name: "Inspektre Scan"
+on: push
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Perform DeepCode analysis
+        uses: georgismitev/deepcode-code-scanning-analysis@master
+        env:
+          DEEPCODE_TOKEN: ${{secrets.DEEPCODE_TOKEN}}
+      - name: codeintel
+        uses: inspektre/codeintel-gh@v1
+      - name: setup-node
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: '14'
+      - name: install inspektre
+        env:
+          NPM_CONFIG_PREFIX: "~/.npm-global"
+        run: |
+          export PATH="$(yarn global bin):$PATH"
+          yarn global add @inspektre/inspektre
+      - name: inspektre inspect
+        env:
+          INSPEKTRE_TOKEN: ${{secrets.INSPEKTRE_TOKEN}}
+          INSPEKTRE_CLIENT_ID: ${{secrets.INSPEKTRE_CLIENT_ID}}
+          INSPEKTRE_CLIENT_SECRET: ${{secrets.INSPEKTRE_CLIENT_SECRET}}
+        run: |
+          ~/.npm-global/bin/inspektre reauthorize
+          ~/.npm-global/bin/inspektre inspect -p demo3 -f $GITHUB_WORKSPACE/AppInspectorResults.json --sarif $GITHUB_WORKSPACE/output.sarif -t deepcode
