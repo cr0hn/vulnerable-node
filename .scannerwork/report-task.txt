@@ -1,0 +1,7 @@
+organization=jay-admin
+projectKey=hackathon-demo
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.23159
+dashboardUrl=https://sonarcloud.io/dashboard?id=hackathon-demo
+ceTaskId=AXvHyh2UqTqxQeo4bQY8
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXvHyh2UqTqxQeo4bQY8
