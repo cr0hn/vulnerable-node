@@ -6,6 +6,8 @@ function do_auth(username, password) {
 
     var q = "SELECT * FROM users WHERE name = '" + username + "' AND password ='" + password + "';";
 
+    db.one(q);
+    
     return db.one(q);
 }
 
