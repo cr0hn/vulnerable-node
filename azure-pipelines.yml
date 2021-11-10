@@ -38,7 +38,7 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-    - task: CmdLine@3
+    - task: CmdLine@2
       displayName: 'WhiteSource Scan'
       enabled: true
       continueOnError: false
