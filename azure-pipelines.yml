@@ -46,7 +46,12 @@ stages:
       continueOnError: false
 
       env: {
-      WS_APIKEY: "$(WS_ApiKey)", # This is taken from AZDO secrects
-      WS_USERKEY: "$(WS_UserKey)", # This is taken from AZDO secrects
-      WS_WSS_URL: "$(WS_WssUrl)", # This is taken from AZDO secrects
+       WS_APIKEY: $(APIKEY),
+       WS_USERKEY: $(USERKEY),
+       WS_WSS_URL: $(WSS_URL),
+       WS_PRODUCTNAME: AZDO_$(System.TeamProject),
+       WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
     }
+
+
+    
