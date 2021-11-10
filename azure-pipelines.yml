@@ -46,9 +46,9 @@ stages:
       continueOnError: false
 
       env: {
-       WS_APIKEY: $(APIKEY),
+       WS_APIKEY: 096db8ec-fefa-4e58-b9a0-e3413373d807,
        WS_USERKEY: $(USERKEY),
-       WS_WSS_URL: $(WSS_URL),
+       WS_WSS_URL: https://saas.whitesourcesoftware.com,
        WS_PRODUCTNAME: AZDO_$(System.TeamProject),
        WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
     }
