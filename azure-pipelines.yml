@@ -47,10 +47,12 @@ stages:
 
       env: {
        WS_APIKEY: 096db8ec-fefa-4e58-b9a0-e3413373d807,
-       WS_USERKEY: $(USERKEY),
+      # WS_USERKEY: $(USERKEY),
        WS_WSS_URL: 'https://saas.whitesourcesoftware.com',
-       WS_PRODUCTNAME: AZDO_$(System.TeamProject),
-       WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
+      # WS_PRODUCTNAME: AZDO_$(System.TeamProject),
+      # WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
+      WS_PRODUCTNAME:'Dcker Product from azur',
+      WS_PROJECTNAME:'vulnerable-node'
     }
 
 
