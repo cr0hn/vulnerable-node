@@ -50,9 +50,9 @@ stages:
       # WS_USERKEY: $(USERKEY),
        WS_WSS_URL: 'https://saas.whitesourcesoftware.com',
       # WS_PRODUCTNAME: AZDO_$(System.TeamProject),
-      # WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
-      WS_PRODUCTNAME:Docker Product from azur,
-      WS_PROJECTNAME:vulnerable-node
+      # WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName),
+      WS_PRODUCTNAME: 'DockerProduct',
+      WS_PROJECTNAME: 'vulnerable-node'
     }
 
 
