@@ -28,6 +28,12 @@ stages:
     pool:
       vmImage: $(vmImageName)
     steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          curl -LJO https://unified-agent.s3.amazonaws.com/wss-unified-agent.jar
+          echo Unified Agent downloaded successfully
+          java -jar wss-unified-agent.jar
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
