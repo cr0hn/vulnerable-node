@@ -49,3 +49,5 @@ stages:
         WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         WS_PRODUCTNAME: AZDO_$(System.TeamProject)
         WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
+        WS_DOCKER_SCANIMAGES: true
+        WS_DOCKER_INCLUDES: ".*$(Build.Repository.Name).*"
