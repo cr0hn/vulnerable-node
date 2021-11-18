@@ -51,3 +51,5 @@ stages:
         WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
         WS_DOCKER_SCANIMAGES: true
         WS_DOCKER_INCLUDES: ".*$(Build.Repository.Name).*"
+    - bash: |
+        echo ".*$(Build.Repository.Name).*"
