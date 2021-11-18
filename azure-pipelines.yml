@@ -11,7 +11,7 @@ resources:
 variables:
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: '7a7e03b5-8510-4096-b0ae-a9d96a202624'
-  imageRepository: 'tamirdahanvulnerablenode'
+  imageRepository: 'VulnerableNode'
   containerRegistry: 'wsscontainerregistry.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -50,7 +50,4 @@ stages:
         WS_PRODUCTNAME: AZDO_$(System.TeamProject)
         WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
         WS_DOCKER_SCANIMAGES: true
-        # WS_DOCKER_INCLUDES: ".*$(Build.Repository.Name).*"
         WS_DOCKER_INCLUDES: ".*$(imageRepository).*" 
-    - bash: |
-        echo ".*$(Build.Repository.Name).*"
