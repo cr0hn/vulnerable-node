@@ -55,7 +55,7 @@ stages:
         WS_DOCKER_INCLUDES: ".*$(imageRepository).*" 
         
         steps:
-        - bash: |
+         - bash: |
             echo $(Build.ArtifactStagingDirectory)
             echo $(Build.BinariesDirectory)
             echo $(Build.BuildId)
