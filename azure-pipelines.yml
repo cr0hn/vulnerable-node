@@ -48,6 +48,7 @@ stages:
         WS_APIKEY: 096db8ec-fefa-4e58-b9a0-e3413373d807
         WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         WS_PRODUCTNAME: AZDO_$(System.TeamProject)
-        WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
+        WS_PROJECTNAME: $(Build.Repository.Name) #_$(Build.SourceBranchName )
+        #WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName )
         WS_DOCKER_SCANIMAGES: true
         WS_DOCKER_INCLUDES: ".*$(imageRepository).*" 
