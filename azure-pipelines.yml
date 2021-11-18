@@ -50,6 +50,7 @@ stages:
         WS_PRODUCTNAME: AZDO_$(System.TeamProject)
         WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName)
         WS_DOCKER_SCANIMAGES: true
-        WS_DOCKER_INCLUDES: ".*$(Build.Repository.Name).*"
+        # WS_DOCKER_INCLUDES: ".*$(Build.Repository.Name).*"
+        WS_DOCKER_INCLUDES: ".*$(imageRepository).*" 
     - bash: |
         echo ".*$(Build.Repository.Name).*"
