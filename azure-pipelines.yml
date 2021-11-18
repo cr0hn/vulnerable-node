@@ -48,45 +48,8 @@ stages:
         WS_APIKEY: 096db8ec-fefa-4e58-b9a0-e3413373d807
         WS_WSS_URL: https://saas.whitesourcesoftware.com/agent
         WS_PRODUCTNAME: AZDO_$(System.TeamProject)
-        WS_PROJECTNAME: $(Build.DefinitionName)
+        WS_PROJECTNAME: $(System.DefinitionId)
         #WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName )
         
         WS_DOCKER_SCANIMAGES: true
         WS_DOCKER_INCLUDES: ".*$(imageRepository).*" 
-        
-        steps:
-         - bash: |
-            echo $(Build.ArtifactStagingDirectory)
-            echo $(Build.BinariesDirectory)
-            echo $(Build.BuildId)
-            echo $(Build.BuildNumber)
-            echo $(Build.BuildUri)
-            echo $(Build.ContainerId)
-            echo $(Build.DefinitionName)
-            echo $(Build.DefinitionVersion)
-            echo $(Build.QueuedBy)
-            echo $(Build.QueuedById)
-            echo $(Build.Reason)
-            echo $(Build.Repository.Clean)
-            echo $(Build.Repository.Git.SubmoduleCheckout)
-            echo $(Build.Repository.ID)
-            echo $(Build.Repository.LocalPath)
-            echo $(Build.Repository.Name)
-            echo $(Build.Repository.Provider)
-            echo $(Build.Repository.Tfvc.Workspace)
-            echo $(Build.Repository.Uri)
-            echo $(Build.RequestedFor)
-            echo $(Build.RequestedForEmail)
-            echo $(Build.RequestedForId)
-            echo $(Build.SourceBranch)
-            echo $(Build.SourceBranchName)
-            echo $(Build.SourcesDirectory)
-            echo $(Build.SourceTfvcShelveset)
-            echo $(Build.SourceVersion)
-            echo $(Build.SourceVersionMessage)
-            echo $(Build.StagingDirectory)
-            echo $(Build.TriggeredBy.BuildId)
-            echo $(Build.TriggeredBy.BuildNumber)
-            echo $(Build.TriggeredBy.DefinitionId)
-            echo $(Build.TriggeredBy.DefinitionName)
-            echo $(Build.TriggeredBy.ProjectID)
