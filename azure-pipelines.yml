@@ -51,7 +51,7 @@ stages:
         #WS_PROJECTNAME: AZDO_$(System.TeamProject)
         #WS_PROJECTNAME: $(Build.BuildId)
         #WS_PROJECTNAME: $(System.DefinitionId)
-        WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName )
-        
+        #WS_PROJECTNAME: $(Build.Repository.Name)_$(Build.SourceBranchName )
+        WS_DOCKER_PROJECTNAMEFORMAT: "repositoryName" 
         WS_DOCKER_SCANIMAGES: true
         WS_DOCKER_INCLUDES: ".*$(imageRepository).*" 
