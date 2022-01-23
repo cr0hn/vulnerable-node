@@ -3,6 +3,7 @@ var url = require("url");
 var express = require('express');
 var auth = require("../model/auth");
 var router = express.Router();
+const { Octokit } = require("@octokit/rest");
 
 var logger = log4js.getLogger('vnode')
 
@@ -48,6 +49,23 @@ router.get('/logout', function(req, res, next) {
     req.session.user = null;
 
     res.redirect("/login")
+});
+
+// Make github api call
+router.get('/github/:user', function (req, res, next) {
+    var user = req.params.user;
+
+    const octokit = new Octokit({
+        auth: "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"
+    });
+
+    octokit.users.get({
+        username: user
+    }).then(function (data) {
+            res.json(data);
+        }).catch(function (err) {
+            res.json(err);
+        });
 });
 
 module.exports = router;
