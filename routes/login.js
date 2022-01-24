@@ -5,6 +5,7 @@ var auth = require("../model/auth");
 var router = express.Router();
 
 var logger = log4js.getLogger('vnode')
+let secret = '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'
 
 // Login template
 router.get('/login', function(req, res, next) {
