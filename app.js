@@ -41,7 +41,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-  secret: 'asddfilhpaf78h78032h780g780fg780asg780dsbovncubuyvqy',
+  secret: 'ñasddfilhpaf78h78032h780g780fg780asg780dsbovncubuyvqy',
   cookie: {
     secure: false,
     maxAge: 99999999999
