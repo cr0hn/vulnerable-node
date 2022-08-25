@@ -9,6 +9,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var log4js = require("log4js");
 
+var rateLimiter = require("../middlewares/rateLimiter");
 var init_db = require('./model/init_db');
 var login = require('./routes/login');
 var products = require('./routes/products');
@@ -49,6 +50,7 @@ app.use(session({
     maxAge: 99999999999
   }
 }));
+app.use(rateLimiter)
 
 /*
  * Routes config

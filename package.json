@@ -13,6 +13,7 @@
     "ejs": "^2.4.2",
     "ejs-locals": "^1.0.2",
     "express": "~4.13.1",
+    "express-rate-limit": "^6.5.2",
     "express-session": "^1.13.0",
     "log4js": "^0.6.36",
     "morgan": "~1.6.1",

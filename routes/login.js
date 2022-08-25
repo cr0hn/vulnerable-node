@@ -3,6 +3,9 @@ var url = require("url");
 var express = require('express');
 var auth = require("../model/auth");
 var router = express.Router();
+var rateLimiter = require("../middlewares/rateLimiter");
+
+router.use(rateLimiter)
 
 var logger = log4js.getLogger('vnode')
 
