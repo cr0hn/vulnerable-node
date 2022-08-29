@@ -9,11 +9,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var log4js = require("log4js");
 
-var rateLimiter = require("../middlewares/rateLimiter");
 var init_db = require('./model/init_db');
 var login = require('./routes/login');
 var products = require('./routes/products');
-require('dotenv').config()
 
 var app = express();
 
@@ -38,19 +36,17 @@ app.set('view engine', 'ejs');
 // uncomment after placing your favicon in /public
 app.use(logger('combined', {stream: accessLogStream}));
 app.use(bodyParser());
-// app.use(express.limit('2mb'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
-  secret: process.env.COOKIE_SECRET,
+  secret: 'ñasddfilhpaf78h78032h780g780fg780asg780dsbovncubuyvqy',
   cookie: {
-    secure: true,
+    secure: false,
     maxAge: 99999999999
   }
 }));
-app.use(rateLimiter)
 
 /*
  * Routes config

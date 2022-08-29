@@ -3,9 +3,7 @@ var check_logged = require("./login_check");
 var url = require("url");
 var db_products = require("../model/products");
 var router = express.Router();
-var rateLimiter = require("../middlewares/rateLimiter");
 
-router.use(rateLimiter)
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
