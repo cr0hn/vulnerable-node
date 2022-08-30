@@ -40,9 +40,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+// hardcoded credentials
 app.use(session({
   secret: 'ñasddfilhpaf78h78032h780g780fg780asg780dsbovncubuyvqy',
   cookie: {
+    // not secure cookies
     secure: false,
     maxAge: 99999999999
   }
