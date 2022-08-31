@@ -43,7 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // hardcoded credentials
 app.use(session({
-  secret: process.env.COOKIE_SECRET,
+  secret: 'asddfilhpaf78h78032h780g780fg780asg780dsbovncubuyvqy',
   cookie: {
     // not secure cookies
     secure: false,
