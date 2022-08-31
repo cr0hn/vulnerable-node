@@ -12,6 +12,7 @@ var log4js = require("log4js");
 var init_db = require('./model/init_db');
 var login = require('./routes/login');
 var products = require('./routes/products');
+require('dotenv').config();
 
 var app = express();
 
@@ -42,7 +43,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 // hardcoded credentials
 app.use(session({
-  secret: 'asddfilhpaf78h78032h780g780fg780asg780dsbovncubuyvqy',
+  secret: process.env.COOKIE_SECRET,
   cookie: {
     // not secure cookies
     secure: false,
