@@ -1,6 +1,8 @@
 Vulnerable Node
 ===============
 
+Changes
+
 ![Logo](https://raw.githubusercontent.com/cr0hn/vulnerable-node/master/images/logo-small.png)
 
 *Vulnerable Node: A very vulnerable web site written in NodeJS*
