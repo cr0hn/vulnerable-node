@@ -1,12 +1,12 @@
-version: '2'
+version: '3.9'
 services:
   vulnerable_node:
     restart: always
     build: .
+    depends_on:
+      - postgres_db
     ports:
       - "3000:3000"
-#    links:
-#      - postgres_db:postgres_db
     depends_on:
       - postgres_db
 
