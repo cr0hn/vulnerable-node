@@ -23,13 +23,13 @@
 
         <% for( var i=0; i < products.length; i++)  {%>
         <tr>
-            <td><%- products[i].product_id %></td>
-            <td><%- products[i].product_name %></td>
-            <td><%- products[i].mail %></td>
-            <td><%- products[i].phone %></td>
-            <td><%- products[i].ship_date %></td>
-            <td><%- products[i].address %></td>
-            <td><%- products[i].price %>€</td>
+            <td><%= products[i].product_id %></td>
+            <td><%= products[i].product_name %></td>
+            <td><%= products[i].mail %></td>
+            <td><%= products[i].phone %></td>
+            <td><%= products[i].ship_date %></td>
+            <td><%= products[i].address %></td>
+            <td><%= products[i].price %>€</td>
         </tr>
         <%}%>
         </tbody>

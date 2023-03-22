@@ -5,11 +5,11 @@
     <div class="col-md-12">
 
         <div class="thumbnail">
-            <img class="img-responsive" src="/images/<%- product.image %>" alt="">
+            <img class="img-responsive" src="/images/<%= product.image %>" alt="">
             <div class="caption-full">
-                <h4 class="pull-right"><%- product.price %> €</h4>
-                <h4><a href="#"><%-product.name%> </a></h4>
-                <p><%-product.description%> </p>
+                <h4 class="pull-right"><%= product.price %> €</h4>
+                <h4><a href="#"><%=product.name%> </a></h4>
+                <p><%=product.description%> </p>
             </div>
         </div>
         <a id="buy_button" class="btn btn-success pull-right" href="#">Buy <i class="glyphicon glyphicon-shopping-cart"></i></a>
@@ -45,10 +45,10 @@
                         </div>
                         <div class="form-group">
                             <label for="price">Product price</label>
-                            <input type="text" class="form-control" name="price" id="price" value="<%- product.price %>€" readonly>
+                            <input type="text" class="form-control" name="price" id="price" value="<%= product.price %>€" readonly>
                         </div>
-                        <input type="hidden" class="form-control" name="product_id" id="product_id" value="<%- product.id %>">
-                        <input type="hidden" class="form-control" name="product_name" id="product_name" value="<%- product.name %>">
+                        <input type="hidden" class="form-control" name="product_id" id="product_id" value="<%= product.id %>">
+                        <input type="hidden" class="form-control" name="product_name" id="product_name" value="<%= product.name %>">
                 </div>
                 <div class="modal-footer">
                     <span id="error" class="label label-danger pull-left hidden"></span>

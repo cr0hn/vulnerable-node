@@ -13,12 +13,12 @@
     %>
         <div class="item">
             <div class="thumbnail">
-                <a href="/products/detail?id=<%-product.id%>"><img src="/images/<%-product.image%>" alt=""></a>
+                <a href="/products/detail?id=<%=product.id%>"><img src="/images/<%=product.image%>" alt=""></a>
                 <div class="caption">
-                    <h4 class="pull-right"><%-product.price%>€</h4>
-                    <h4><a href="/products/detail?id=<%-product.id%>"><%-product.name%></a>
+                    <h4 class="pull-right"><%=product.price%>€</h4>
+                    <h4><a href="/products/detail?id=<%=product.id%>"><%=product.name%></a>
                     </h4>
-                    <p><%-product.description%></p>
+                    <p><%=product.description%></p>
                 </div>
             </div>
         </div>
