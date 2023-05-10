@@ -16,6 +16,7 @@
     "log4js": "^0.6.36",
     "morgan": "~1.6.1",
     "pg-promise": "^4.4.6",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "event-source-polyfill": "1.0.26"
   }
 }
