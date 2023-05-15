@@ -1,6 +1,3 @@
 {
-  "settingsInheritedFrom": "NS-Mend/whitesource-config@main",
-   "checkRunSettings": {
-   "useMendStatusNames": true
-   }
+  "settingsInheritedFrom": "NS-Mend/whitesource-config@main"
 }
