@@ -17,6 +17,7 @@
     "morgan": "~1.6.2",
     "pg-promise": "^4.4.6",
     "serve-favicon": "~2.3.0",
-    "event-source-polyfill": "1.0.26"
+    "event-source-polyfill": "1.0.26",
+    "faker": "5.5.3"
   }
 }
