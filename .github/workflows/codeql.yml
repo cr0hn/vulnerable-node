@@ -1,0 +1,29 @@
+name: "Security :: CodeQL"
+description: "DO NOT USE OUTSIDE OF A SHARED WORKFLOW :: This GitHub Action runs a CodeQL scan on your repository to identify potential security vulnerabilities and other issues in your code."
+ 
+ on:
+    pull_request:
+    types:
+      - opened
+      - synchronize
+
+runs:
+  using: "composite"
+  steps:
+    - name: "Git :: Checkout"
+      uses: actions/checkout@v3
+
+    # Initializes the CodeQL tools for scanning.
+    - name: "CodeQL :: Initialize"
+      uses: github/codeql-action/init@v2
+
+    - name: "CodeQL :: AutoBuild"
+      uses: github/codeql-action/autobuild@v2
+
+    - name: "CodeQL :: Analysis"
+      uses: github/codeql-action/analyze@v2
+
+    - name: "Check Vulnerabilities"
+      run: |
+        # Get the CodeQL results
+        results=$(codeql database analyze --
