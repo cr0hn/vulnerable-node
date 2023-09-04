@@ -1,7 +1,6 @@
 name: "Security :: CodeQL"
 description: "DO NOT USE OUTSIDE OF A SHARED WORKFLOW :: This GitHub Action runs a CodeQL scan on your repository to identify potential security vulnerabilities and other issues in your code."
- 
- on:
+  on:
     pull_request:
     types:
       - opened
