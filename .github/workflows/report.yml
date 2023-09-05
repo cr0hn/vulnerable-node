@@ -1,0 +1,14 @@
+steps:               
+      - name: Dependabot Alert CSV Export
+        uses: ShamKarthikS-Hexaware/dependabot-alert-export@v1.0
+        with:        
+          GITHUB_TOKEN: ${{secrets.GH_TOKEN}}
+          org_name: 'rahiCICD'
+          repo_name: 'vulnerable-node'
+          csv_path: data/vulnerability.csv
+          
+      - name: Upload Vulnerability report
+        uses: actions/upload-artifact@v3
+        with:
+           name: vulnerability_report
+           path: data/vulnerability.csv          
