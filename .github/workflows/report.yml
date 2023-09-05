@@ -1,3 +1,36 @@
-              - name: Dependabot Alert CSV Export
-                uses: ShamKarthikS-Hexaware/dependabot-alert-export@v1.0
-            
+name: Export Dependabot Alerts to CSV
+
+on:
+  workflow_run:
+    workflows: ["Dependabot Alerts"]
+    types:
+      - completed
+
+jobs:
+  export:
+    name: Export Dependabot Alerts
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Install Ruby dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Export Dependabot Alerts to CSV
+        run: |
+          bundle exec ruby export_dependabot_alerts.rb > dependabot_alerts.csv
+
+      - name: Upload CSV as Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: dependabot-alerts
+          path: dependabot_alerts.csv
