@@ -25,22 +25,10 @@ function search(query) {
 }
 
 function purchase(cart) {
-
-    var q = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price) VALUES('" +
-            cart.mail + "', '" +
-            cart.product_name + "', '" +
-            cart.username + "', '" +
-            cart.product_id + "', '" +
-            cart.address + "', '" +
-            cart.ship_date + "', '" +
-            cart.phone + "', '" +
-            cart.price +
-            "');";
-
-    return db.one(q);
-
+    var query = "INSERT INTO purchases(mail, product_name, user_name, product_id, address, phone, ship_date, price) VALUES($1, $2, $3, $4, $5, $6, $7, $8)";
+    var values = [cart.mail, cart.product_name, cart.username, cart.product_id, cart.address, cart.ship_date, cart.phone, cart.price];
+    return db.one(query, values);
 }
-
 function get_purcharsed(username) {
 
     var q = "SELECT * FROM purchases WHERE user_name = '" + username + "';";
