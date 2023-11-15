@@ -4,7 +4,7 @@ MAINTAINER "Daniel Garcia aka (cr0hn)" <cr0hn@cr0hn.com>
 
 ENV STAGE "DOCKER"
 
-RUN apt-get update && apt-get install -y netcat
+RUN apt-get update && apt-get install -y netcat --no-install-recommends
 
 # Build app folders
 RUN mkdir /app
