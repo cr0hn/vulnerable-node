@@ -7,8 +7,6 @@ services:
       - postgres_db
     ports:
       - "3000:3000"
-    depends_on:
-      - postgres_db
 
   postgres_db:
     restart: always
