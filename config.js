@@ -5,7 +5,6 @@ var config_local = {
         "database": "vulnerablenode"
     }
 }
-
 var config_devel = {
     // Customer module configs
     "db": {
@@ -13,7 +12,6 @@ var config_devel = {
         "database": "vulnerablenode"
     }
 }
-
 var config_docker = {
     // Customer module configs
     "db": {
@@ -21,7 +19,6 @@ var config_docker = {
         "database": "vulnerablenode"
     }
 }
-
 // Select correct config
 var config = null;
 
@@ -41,8 +38,6 @@ switch (process.env.STAGE){
     default:
         config = config_devel;
 }
-
 // Build connection string
 config.db.connectionString = config.db.server + "/" + config.db.database
-
 module.exports = config;
