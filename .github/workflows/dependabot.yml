@@ -1,0 +1,22 @@
+name: Trigger Dependabot Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  trigger_dependabot_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Dependabot Scan
+        run: |
+          curl -X POST \
+            -H "Authorization: token YOUR_GITHUB_PERSONAL_ACCESS_TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/rahiCICD/vulnerable-node/pulls \
+            -d '{
+              "title": "Trigger Dependabot Scan",
+              "body": "This pull request triggers Dependabot to scan the specified branch.",
+              "head": "rahiCICD-patch-1",
+              "base": "rahiCICD-patch-1",
+              "maintainer_can_modify": true
+            }'
