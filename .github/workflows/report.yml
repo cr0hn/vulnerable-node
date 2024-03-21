@@ -1,10 +1,9 @@
 name: Export Dependabot Alerts to CSV
 
 on:
-  workflow_run:
-    workflows: ["Dependabot Alerts"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   export:
