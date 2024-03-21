@@ -3,7 +3,7 @@ name: Export Dependabot Alerts to CSV
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   export:
