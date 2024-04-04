@@ -24,6 +24,9 @@ jobs:
         env:
           BUNDLER_VERSION: 2.2.28
 
+      - name: Change working directory
+        run: cd $GITHUB_WORKSPACE  # Change to the root directory of the repository
+
       - name: Install Ruby dependencies
         run: bundle install
 
