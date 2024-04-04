@@ -17,16 +17,18 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7 #test
+          ruby-version: 2.7
+
+      - name: Install Bundler
+        run: gem install bundler -v 2.2.28  # Install Bundler version compatible with Ruby 2.7
+        env:
+          BUNDLER_VERSION: 2.2.28
 
       - name: Install Ruby dependencies
-        run: |
-          gem install bundler
-          bundle install
+        run: bundle install
 
       - name: Export Dependabot Alerts to CSV
-        run: |
-          bundle exec ruby export_dependabot_alerts.rb > dependabot_alerts.csv
+        run: bundle exec ruby export_dependabot_alerts.rb > dependabot_alerts.csv
 
       - name: Upload CSV as Artifact
         uses: actions/upload-artifact@v2
