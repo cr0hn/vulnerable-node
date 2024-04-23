@@ -1,17 +1,12 @@
-name: Dependabot
+name: Sample CI
+
 on:
   push:
-    branches:
-      - master
+    branches: [main]  # You can adjust the branch if needed
 
 jobs:
-  dependabot:
+  sample-ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Run Dependabot
-        uses: dependabot/dependabot-core@v0.161.1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print success message
+        run: echo "Sample CI workflow passed successfully!"
