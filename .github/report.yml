@@ -1,3 +1,0 @@
-              - name: Dependabot Alert Export
-                uses: ambilykk/dependabot-alert-export@v1.0
-            
