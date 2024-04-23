@@ -1,7 +1,6 @@
 name: Dependabot
 on:
-  pull_request:
-    types: [opened, synchronize]
+  push:
     branches:
       - master
 
