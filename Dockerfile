@@ -1,6 +1,6 @@
 FROM node:19.4.0-bullseye-slim
 
-MAINTAINER "Daniel Garcia aka (cr0hn)" <cr0hn@cr0hn.com>
+LABEL maintainer="Daniel García (cr0hn) cr0hn@cr0hn.com"
 
 ENV STAGE "DOCKER"
 
