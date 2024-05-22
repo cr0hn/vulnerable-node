@@ -1,0 +1,29 @@
+{
+  "author": "Tom Carden <tom@tom-carden.co.uk>",
+  "contributors": [
+    "Robert Sköld <robert@publicclass.se> (http://publicclass.se)"
+  ],
+  "name": "ejs-locals",
+  "description": "Express 3.x locals for layout, partial and blocks.",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/randometc/ejs-locals.git"
+  },
+  "homepage": "https://github.com/randometc/ejs-locals",
+  "engines": {
+    "node": ">=0.6.0"
+  },
+  "dependencies": {
+    "ejs": "0.8.x"
+  },
+  "devDependencies": {
+    "express": "~3.0.0",
+    "mocha": "*",
+    "should": "*",
+    "methods": "0.0.1"
+  },
+  "scripts": {
+    "test": "mocha -r should -R spec"
+  }
+}

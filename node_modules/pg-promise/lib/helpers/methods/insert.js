@@ -1,0 +1,141 @@
+'use strict';
+
+var $npm = {
+    TableName: require('../tableName'),
+    ColumnSet: require('../columnSet'),
+    formatting: require('../../formatting'),
+    utils: require('../../utils')
+};
+
+var $arr = require('../../array');
+
+/**
+ * @method helpers.insert
+ * @description
+ * Generates an `INSERT` query for either one object or an array of objects.
+ *
+ * @param {object|object[]} data
+ * An insert object with properties for insert values, or an array of such objects.
+ *
+ * When `data` is not a non-null object and not an array, it will throw {@link external:TypeError TypeError} = `Invalid parameter 'data' specified.`
+ *
+ * When `data` is an empty array, it will throw {@link external:TypeError TypeError} = `Cannot generate an INSERT from an empty array.`
+ *
+ * When `data` is an array that contains a non-object value, the method will throw {@link external:Error Error} =
+ * `Invalid insert object at index N.`
+ *
+ * @param {array|helpers.Column|helpers.ColumnSet} [columns]
+ * Set of columns to be inserted.
+ *
+ * It is optional when `data` is a single object, and required when `data` is an array of objects. If not specified for an array
+ * of objects, the method will throw {@link external:TypeError TypeError} = `Parameter 'columns' is required when inserting multiple records.`
+ *
+ * When `columns` is not a {@link helpers.ColumnSet ColumnSet} object, a temporary {@link helpers.ColumnSet ColumnSet}
+ * is created - from the value of `columns` (if it was specified), or from the value of `data` (if it is not an array).
+ *
+ * When the final {@link helpers.ColumnSet ColumnSet} is empty (no columns in it), the method will throw
+ * {@link external:Error Error} = `Cannot generate an INSERT without any columns.`
+ *
+ * @param {helpers.TableName|string|{table,schema}} [table]
+ * Destination table.
+ *
+ * It is normally a required parameter. But when `columns` is passed in as a {@link helpers.ColumnSet ColumnSet} object
+ * with `table` set in it, that will be used when this parameter isn't specified. When neither is available, the method
+ * will throw {@link external:Error Error} = `Table name is unknown.`
+ *
+ * @returns {string}
+ * The resulting query string.
+ *
+ * @see
+ *  {@link helpers.Column Column},
+ *  {@link helpers.ColumnSet ColumnSet},
+ *  {@link helpers.TableName TableName}
+ *
+ * @example
+ *
+ * var pgp = require('pg-promise')({
+ *    capSQL: true // if you want all generated SQL capitalized
+ * });
+ *
+ * var dataSingle = {val: 123, msg: 'hello'};
+ * var dataMulti = [{val: 123, msg: 'hello'}, {val: 456, msg: 'world!'}];
+ *
+ * // Column details can be taken from the data object:
+ *
+ * pgp.helpers.insert(dataSingle, null, 'my-table');
+ * //=> INSERT INTO "my-table"("val","msg") VALUES(123,'hello')
+ *
+ * @example
+ *
+ * // Column details are required for a multi-row `INSERT`:
+ *
+ * pgp.helpers.insert(dataMulti, ['val', 'msg'], 'my-table');
+ * //=> INSERT INTO "my-table"("val","msg") VALUES(123,'hello'),(456,'world!')
+ *
+ * @example
+ *
+ * // Column details from a reusable ColumnSet (recommended for performance):
+ *
+ * var cs = new pgp.helpers.ColumnSet(['val', 'msg'], {table: 'my-table'});
+ *
+ * pgp.helpers.insert(dataMulti, cs);
+ * //=> INSERT INTO "my-table"("val","msg") VALUES(123,'hello'),(456,'world!')
+ *
+ */
+function insert(data, columns, table, capSQL) {
+
+    if (!data || typeof data !== 'object') {
+        throw new TypeError("Invalid parameter 'data' specified.");
+    }
+
+    var isArray = Array.isArray(data);
+
+    if (isArray && !data.length) {
+        throw new TypeError("Cannot generate an INSERT from an empty array.");
+    }
+
+    if (columns instanceof $npm.ColumnSet) {
+        if ($npm.utils.isNull(table)) {
+            table = columns.table;
+        }
+    } else {
+        if (isArray && $npm.utils.isNull(columns)) {
+            throw new TypeError("Parameter 'columns' is required when inserting multiple records.");
+        }
+        columns = new $npm.ColumnSet(columns || data);
+    }
+
+    if (!columns.columns.length) {
+        throw new Error("Cannot generate an INSERT without any columns.");
+    }
+
+    if (!table) {
+        throw new Error("Table name is unknown.");
+    }
+
+    if (!(table instanceof $npm.TableName)) {
+        table = new $npm.TableName(table);
+    }
+
+    var query = capSQL ? sql.capCase : sql.lowCase;
+
+    var format = $npm.formatting.as.format;
+    query = format(query, table.name + columns.names);
+
+    if (isArray) {
+        return query + $arr.map(data, function (d, index) {
+                if (!d || typeof d !== 'object') {
+                    throw new Error("Invalid insert object at index " + index + ".");
+                }
+                return '(' + format(columns.castVariables, columns.prepare(d)) + ')';
+            }).join();
+    }
+    return query + '(' + format(columns.castVariables, columns.prepare(data)) + ')';
+}
+
+var sql = {
+    lowCase: "insert into $1^ values",
+    capCase: "INSERT INTO $1^ VALUES"
+};
+
+module.exports = insert;
